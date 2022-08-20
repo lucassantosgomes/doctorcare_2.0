@@ -1,65 +1,66 @@
-window.addEventListener('scroll', onScroll)
-onScroll()
+window.addEventListener('scroll', onScroll);
+onScroll();
 function onScroll() {
-  showNavOnScroll()
-  backToTopButtonOnScroll()
-  activateMenuAtCurrentSection(home)
-  activateMenuAtCurrentSection(services)
-  activateMenuAtCurrentSection(about)
-  activateMenuAtCurrentSection(contact)
+  showNavOnScroll();
+  backToTopButtonOnScroll();
+  activateMenuAtCurrentSection(home);
+  activateMenuAtCurrentSection(services);
+  activateMenuAtCurrentSection(depoimentos);
+  activateMenuAtCurrentSection(about);
+  activateMenuAtCurrentSection(contact);
 }
 
 function activateMenuAtCurrentSection(section) {
-  const targetLine = scrollY + innerHeight / 2
+  const targetLine = scrollY + innerHeight / 2;
 
   //verificar se a seçao passou da linha
 
   //topo da seçao
-  const sectionTop = section.offsetTop
+  const sectionTop = section.offsetTop;
   //altura
-  const sectionHeight = section.offsetHeight
+  const sectionHeight = section.offsetHeight;
   //o topo da seçao chegou ou ultrapassou a linha alvo;
-  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop
+  const sectionTopReachOrPassedTargetLine = targetLine >= sectionTop;
 
   //verifica se a base esta a baixo da seçao
-  const sectionEndAt = sectionTop + sectionHeight
+  const sectionEndAt = sectionTop + sectionHeight;
 
-  const sectionEndPassedTargetLine = sectionEndAt <= targetLine
+  const sectionEndPassedTargetLine = sectionEndAt <= targetLine;
 
   // console.log('o topo da seçao chegou ou ultrapassou a linha? ',sectionEndPassedTargetLine);
 
   const sectionBoundaries =
-    sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine
+    sectionTopReachOrPassedTargetLine && !sectionEndPassedTargetLine;
 
-  const sectioId = section.getAttribute('id')
+  const sectioId = section.getAttribute('id');
 
-  const menuElement = document.querySelector(`.menu a[href*=${sectioId}]`)
+  const menuElement = document.querySelector(`.menu a[href*=${sectioId}]`);
 
-  menuElement.classList.remove('active')
+  menuElement.classList.remove('active');
   if (sectionBoundaries) {
-    menuElement.classList.add('active')
+    menuElement.classList.add('active');
   }
 }
 
 function showNavOnScroll() {
   if (scrollY > 0) {
-    document.getElementById('navigation').classList.add('scroll')
+    document.getElementById('navigation').classList.add('scroll');
   } else {
-    document.getElementById('navigation').classList.remove('scroll')
+    document.getElementById('navigation').classList.remove('scroll');
   }
 }
 function backToTopButtonOnScroll() {
   if (scrollY > 550) {
-    backToTopButton.classList.add('show')
+    backToTopButton.classList.add('show');
   } else {
-    backToTopButton.classList.remove('show')
+    backToTopButton.classList.remove('show');
   }
 }
 function openMenu() {
-  document.body.classList.add('menu-expanded')
+  document.body.classList.add('menu-expanded');
 }
 function closeMenu() {
-  document.body.classList.remove('menu-expanded')
+  document.body.classList.remove('menu-expanded');
 }
 
 ScrollReveal({
@@ -72,7 +73,10 @@ ScrollReveal({
   #services,
   #services header,
   #services .card,
-  #abaut,
-  #abaut header,
-  #abaut .content
-  `)
+  #depoimentos,
+  #depoimentos .empresas,
+  #about,
+  #about header,
+  #about .content,
+  #contact
+  `);
